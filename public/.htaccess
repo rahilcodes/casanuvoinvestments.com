@@ -1,0 +1,70 @@
+# Apache / LiteSpeed configuration for Casa Nuvo Investments
+Options -MultiViews
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# 1. API Route
+RewriteRule ^api/leads/?$ /api/leads.php [L,QSA]
+
+# 2. Legacy Property Redirects
+RewriteRule ^property/comfortable-apartment-bay-view/?$ /properties/lusignan-two-story/ [R=301,L]
+RewriteRule ^property/luxury-apartment-ocean-view-3/?$ /properties/republic-park-two-story/ [R=301,L]
+RewriteRule ^property/ample-apartment/?$ /properties/windsor-estate-duplex/ [R=301,L]
+RewriteRule ^property/ample-penthouse/?$ /properties/duncan-street-property/ [R=301,L]
+RewriteRule ^property/luxury-family-home-4/?$ /properties/subryanville-4th-avenue/ [R=301,L]
+RewriteRule ^property/la-parfaite-harmonie-two-bedrooms/?$ /properties/la-parfaite-harmonie-two-bedroom/ [R=301,L]
+RewriteRule ^property/gorgeous-villa/?$ /properties/la-parfaite-harmonie-one-bedroom/ [R=301,L]
+RewriteRule ^property/windor-estate-townhouse/?$ /properties/windsor-estate-townhouse/ [R=301,L]
+RewriteRule ^property/windsor-estate-single-family/?$ /properties/windsor-estate-single-family/ [R=301,L]
+RewriteRule ^property/republic-park-townhouse/?$ /properties/republic-park-townhouse/ [R=301,L]
+RewriteRule ^property/modern-office-space/?$ /properties/green-acres-property/ [R=301,L]
+RewriteRule ^property/luxury-family-home-3/?$ /properties/happy-acres-property/ [R=301,L]
+RewriteRule ^property/contemporary-apartment-3/?$ /properties/atlantic-towers/ [R=301,L]
+RewriteRule ^property/gorgeous-villa-for-sale/?$ /properties/garnett-street-studio-rooms/ [R=301,L]
+RewriteRule ^property/apartment-building-for-rent-providence-e-b-d/?$ /properties/providence-apartment-building/ [R=301,L]
+RewriteRule ^property/bel-air-park-residence-for-rent/?$ /properties/bel-air-park-residence/ [R=301,L]
+RewriteRule ^property/condo-for-rent-windsor-estates-e-b-d/?$ /properties/windsor-estates-condo/ [R=301,L]
+RewriteRule ^property/property-for-rent-nabi-housing-scheme-e-b-d-gated-community/?$ /properties/nabi-housing-scheme-residence/ [R=301,L]
+RewriteRule ^property/prospect-residence-copy/?$ /properties/daguiar-park-residence/ [R=301,L]
+RewriteRule ^property/prospect-residence/?$ /properties/prospect-residence/ [R=301,L]
+RewriteRule ^property/(.*)$ /properties/ [R=301,L]
+
+# 3. Other Legacy URL Redirects
+RewriteRule ^current-listings/?$ /properties/ [R=301,L]
+RewriteRule ^status/for-sale/?$ /properties/?status=sale [R=301,L,QSA]
+RewriteRule ^status/for-rent/?$ /properties/?status=rent [R=301,L,QSA]
+RewriteRule ^city/([^/]+)/?$ /properties/?location=$1 [R=301,L,QSA]
+RewriteRule ^label/.*$ /properties/ [R=301,L]
+RewriteRule ^favorite-properties/?$ /favorites/ [R=301,L]
+RewriteRule ^terms-and-conditions/?$ /terms/ [R=301,L]
+RewriteRule ^author/.*$ /about/ [R=301,L]
+RewriteRule ^your-perfect-home-awaits/?$ /insights/your-perfect-home-awaits/ [R=301,L]
+RewriteRule ^the-latest-in-real-estate-trends/?$ /insights/the-latest-in-real-estate-trends/ [R=301,L]
+RewriteRule ^maximizing-your-investments/?$ /insights/maximizing-your-investments/ [R=301,L]
+RewriteRule ^simplifying-your-property-journey/?$ /insights/simplifying-your-property-journey/ [R=301,L]
+
+# 4. Clean URL fallback (if requesting /page without slash and /page/index.html exists)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# Caching for static assets
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

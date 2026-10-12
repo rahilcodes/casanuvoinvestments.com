@@ -3,6 +3,8 @@ import { INSIGHTS } from "@/lib/insights";
 import { PROPERTIES } from "@/lib/properties";
 import { SITE } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "/commercial", "/about", "/properties", "/insights", "/contact", "/terms"].map((path) => ({
     url: `${SITE.url}${path}`,
