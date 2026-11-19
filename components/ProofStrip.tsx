@@ -1,10 +1,9 @@
 import { Reveal } from "@/components/Reveal";
-import { PROPERTIES } from "@/lib/properties";
-import { STATS } from "@/lib/site";
+import { SECTORS, STATS } from "@/lib/site";
 
 /**
  * Four verifiable facts in a row. Values come from lib/site.ts (sales and
- * clients, from the original site) and the live listing data.
+ * clients, from the original site) and the commercial sectors.
  */
 export function ProofStrip({ className = "" }: { className?: string }) {
   const sold = STATS.find((s) => s.suffix === "B+");
@@ -12,7 +11,7 @@ export function ProofStrip({ className = "" }: { className?: string }) {
   const facts = [
     { value: sold ? `${sold.unit} ${sold.count}${sold.suffix}` : null, label: "in property sold" },
     { value: clients ? `${clients.count}${clients.suffix}` : null, label: "clients served" },
-    { value: String(PROPERTIES.length), label: "listings available now" },
+    { value: String(SECTORS.length), label: "commercial property types" },
     { value: "US & GY", label: "local numbers in both countries" },
   ].filter((f): f is { value: string; label: string } => Boolean(f.value));
 

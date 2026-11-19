@@ -10,7 +10,8 @@ RewriteBase /
 RewriteRule ^api/leads/?$ /api/leads.php [L,QSA]
 
 # 2. Legacy Property Redirects
-RewriteRule ^property/comfortable-apartment-bay-view/?$ /properties/lusignan-two-story/ [R=301,L]
+RewriteRule ^properties/lusignan-two-story/?$ /properties/ [R=301,L]
+RewriteRule ^property/comfortable-apartment-bay-view/?$ /properties/ [R=301,L]
 RewriteRule ^property/luxury-apartment-ocean-view-3/?$ /properties/republic-park-two-story/ [R=301,L]
 RewriteRule ^property/ample-apartment/?$ /properties/windsor-estate-duplex/ [R=301,L]
 RewriteRule ^property/ample-penthouse/?$ /properties/duncan-street-property/ [R=301,L]

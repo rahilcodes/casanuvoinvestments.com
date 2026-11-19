@@ -12,7 +12,7 @@ import { Reveal } from "@/components/Reveal";
 import { Voices } from "@/components/Voices";
 import { TESTIMONIALS } from "@/lib/insights";
 import { FOR_RENT, FOR_SALE } from "@/lib/properties";
-import { FOUNDER, LOCATIONS, SITE } from "@/lib/site";
+import { FOUNDER, SITE } from "@/lib/site";
 
 /** Rentals in display order, strongest photography first; anything unlisted follows. */
 const RENT_ORDER = [
@@ -26,19 +26,11 @@ const RENT_ORDER = [
   "la-parfaite-harmonie-one-bedroom",
 ];
 
-/** Home-page photography per region: a real street or home in each, no repeats of the hero. */
-const AREA_IMAGES: Record<string, { src: string; position?: string }> = {
-  georgetown: { src: "/images/georgetown-street.jpg", position: "object-[60%_50%]" },
-  "east-bank-demerara": { src: "/images/properties/windsor-estate-single-family-1.jpg" },
-  "east-coast-demerara": { src: "/images/properties/lusignan-two-story-1.jpg" },
-  "west-bank-demerara": { src: "/images/properties/la-parfaite-harmonie-one-bedroom-1.jpg" },
-};
-
-/** What working with the team is like, in plain terms (home page only). */
+/** What a commercial client gets from working with the founder's team (home page only). */
 const VALUES: { icon: IconName; title: string; text: string }[] = [
-  { icon: "compass", title: "Local knowledge", text: "We work in Georgetown and Demerara every day, so advice on sites, prices and rents comes from the ground." },
-  { icon: "handshake", title: "One team, start to finish", text: "The people who show you the property are the people who negotiate the deal and see it through to closing." },
-  { icon: "shield", title: "Straight answers", text: "We tell you what a property is really worth and what to check before you commit." },
+  { icon: "compass", title: "Market knowledge", text: "We follow sale prices, rents and land values across Georgetown and Demerara, so your pricing and offers rest on real deals." },
+  { icon: "handshake", title: "Senior attention", text: "The person who walks the site with you is the person who negotiates the terms and sees the deal through to closing." },
+  { icon: "shield", title: "Straight advice", text: "We tell you what a property is worth, what it should rent for and what to check before you sign." },
 ];
 
 const SELL_STEPS = [
@@ -66,7 +58,7 @@ export default function HomePage() {
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/30 sm:hidden" />
 
           <div className="wrap flex flex-1 flex-col justify-end pt-36 pb-8 sm:pb-12">
-            <p className="kicker-light animate-fade-up before:hidden">Commercial real estate brokerage · Guyana</p>
+            <p className="kicker-light animate-fade-up">Commercial real estate brokerage · Guyana</p>
             <h1 id="hero-title" className="t-display mt-5 max-w-[13ch] animate-fade-up text-[clamp(3.1rem,7.2vw,7rem)] [animation-delay:120ms]">
               Space for <span className="t-accent text-gold-bright">business</span> in Guyana.
             </h1>
@@ -91,7 +83,7 @@ export default function HomePage() {
         <div className="wrap">
           <Reveal className="grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <p className="kicker-light before:hidden">Commercial real estate</p>
+              <p className="kicker-light">Commercial real estate</p>
               <h2 id="sectors-title" className="t-h2 mt-6 max-w-[16ch] text-paper">
                 Built for the businesses <span className="t-accent text-gold-bright">building</span> Guyana.
               </h2>
@@ -161,11 +153,12 @@ export default function HomePage() {
             <Reveal>
               <p className="kicker-light">Meet the founder</p>
               <h2 id="founder-title" className="mt-6 text-[clamp(1.9rem,3.4vw,3.1rem)] leading-[1.1] font-medium tracking-[-0.035em] text-balance">
-                “We don’t just invest in properties. We elevate lifestyles and build wealth.”
+                A founder-led brokerage, from first site visit to signed deal.
               </h2>
               <p className="mt-7 max-w-[38rem] text-[16.5px] leading-[1.75] text-paper/65">
-                Casa Nuvo is a commercial brokerage first: warehouses, commercial land and office buildings across Georgetown and Demerara, alongside a select portfolio of homes.
-                Whether you’re a business looking for space, an investor building income or an owner ready to sell, you deal directly with the people who know the market.
+                Casa Nuvo is run by its founder and owner, and clients work with the founder’s team directly. We find warehouses, land and office space for
+                businesses, take owners’ buildings to qualified buyers and tenants, and help investors weigh rent, tenancy and resale before they commit.
+                With numbers in both Guyana and the United States, we are easy to reach wherever your business is based.
               </p>
             </Reveal>
 
@@ -182,14 +175,46 @@ export default function HomePage() {
             </ul>
 
             <Reveal delay={150} className="mt-12 flex flex-wrap gap-3">
-              <Link href="/contact" className="pill-gold">
-                Book a consultation <Icon name="arrow" className="h-4 w-4" />
+              <Link href="/contact?topic=commercial" className="pill-gold">
+                Discuss your requirement <Icon name="arrow" className="h-4 w-4" />
               </Link>
               <Link href="/about" className="pill-glass">
                 Our story
               </Link>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ───────────── SELLING ───────────── */}
+      <section className="bg-bone py-24 md:py-32" aria-labelledby="sell-title">
+        <div className="wrap grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="lg:col-span-5">
+            <p className="eyebrow">For owners</p>
+            <h2 id="sell-title" className="t-h2 mt-5 text-ink">
+              Selling or leasing out a property?
+            </h2>
+            <p className="mt-6 max-w-md text-[16.5px] leading-[1.7] text-stone">
+              Warehouse, land, office building or home: get a realistic valuation and a team that finds the buyer or tenant and handles the negotiation for you.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact?topic=sell" className="pill-dark">
+                Request a valuation <Icon name="arrow" className="h-4 w-4" />
+              </Link>
+              <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="pill-light">
+                <Icon name="whatsapp" className="h-4 w-4 text-gold-deep" /> WhatsApp us
+              </a>
+            </div>
+          </Reveal>
+          <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:col-span-7">
+            {SELL_STEPS.map((s, i) => (
+              <Reveal as="li" key={s.title} delay={i * 90} className="flex flex-col rounded-[22px] bg-paper p-7">
+                <span className="text-[14px] font-semibold text-gold-deep">Step {i + 1}</span>
+                <h3 className="mt-10 text-[19px] font-semibold tracking-[-0.02em] text-ink">{s.title}</h3>
+                <p className="mt-2 text-[15px] leading-[1.6] text-stone">{s.text}</p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -259,78 +284,6 @@ export default function HomePage() {
               ))}
             </Carousel>
           </div>
-        </div>
-      </section>
-
-      {/* ───────────── AREAS ───────────── */}
-      <section className="bg-paper py-24 md:py-32" aria-labelledby="areas-title">
-        <div className="wrap">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 id="areas-title" className="t-h2 text-ink">
-              Explore by area
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-[16.5px] leading-[1.7] text-stone">
-              From Georgetown’s business districts to the growing corridors of the East Bank, East Coast and West Bank.
-            </p>
-          </Reveal>
-          <ul className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 md:mt-16 lg:grid-cols-4">
-            {LOCATIONS.map((l, i) => {
-              const img = AREA_IMAGES[l.slug] ?? { src: l.image };
-              return (
-                <Reveal as="li" key={l.slug} delay={i * 80}>
-                  <Link
-                    href={`/properties?location=${l.slug}`}
-                    className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[22px] bg-ink-3 p-4 text-paper no-underline sm:p-6"
-                  >
-                    <Image
-                      src={img.src}
-                      alt=""
-                      fill
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      className={`photo object-cover transition-transform duration-[1400ms] ease-[var(--ease-luxe)] group-hover:scale-[1.06] ${img.position ?? ""}`}
-                    />
-                    <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
-                    <span className="relative block text-[clamp(1.05rem,1.6vw,1.35rem)] leading-tight font-semibold tracking-[-0.02em] text-balance">{l.name}</span>
-                    <span className="relative mt-2 inline-flex items-center gap-1.5 text-[13.5px] text-paper/75 transition-colors group-hover:text-gold-bright">
-                      View listings <Icon name="arrow" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-                    </span>
-                  </Link>
-                </Reveal>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
-
-      {/* ───────────── SELLING ───────────── */}
-      <section className="bg-bone py-24 md:py-32" aria-labelledby="sell-title">
-        <div className="wrap grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <Reveal className="lg:col-span-5">
-            <p className="eyebrow">For owners</p>
-            <h2 id="sell-title" className="t-h2 mt-5 text-ink">
-              Selling or leasing out a property?
-            </h2>
-            <p className="mt-6 max-w-md text-[16.5px] leading-[1.7] text-stone">
-              Warehouse, land, office building or home: get a realistic valuation and a team that finds the buyer or tenant and handles the negotiation for you.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact?topic=sell" className="pill-dark">
-                Request a valuation <Icon name="arrow" className="h-4 w-4" />
-              </Link>
-              <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="pill-light">
-                <Icon name="whatsapp" className="h-4 w-4 text-gold-deep" /> WhatsApp us
-              </a>
-            </div>
-          </Reveal>
-          <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:col-span-7">
-            {SELL_STEPS.map((s, i) => (
-              <Reveal as="li" key={s.title} delay={i * 90} className="flex flex-col rounded-[22px] bg-paper p-7">
-                <span className="text-[14px] font-semibold text-gold-deep">Step {i + 1}</span>
-                <h3 className="mt-10 text-[19px] font-semibold tracking-[-0.02em] text-ink">{s.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.6] text-stone">{s.text}</p>
-              </Reveal>
-            ))}
-          </ol>
         </div>
       </section>
 

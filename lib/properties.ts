@@ -131,29 +131,6 @@ export const PROPERTIES: Property[] = [
     ref: "HZHZ05",
     listed: "2024-12-01",
   },
-  {
-    slug: "lusignan-two-story",
-    title: "Lusignan — Two Story",
-    status: "sale",
-    price: 50_000_000,
-    location: "east-coast-demerara",
-    neighborhood: "Lusignan",
-    address: "Lusignan, East Coast Demerara",
-    type: "Single Family Home",
-    beds: 4,
-    baths: 2,
-    garage: 1,
-    sqft: 2180,
-    labels: ["Hot Offer"],
-    description: [
-      "Located in Lusignan on the East Coast of Demerara, this spacious two-story property offers 4 bedrooms and 2 bathrooms with ample living space. It comes semi-furnished, featuring elegant tiled floors and a tiled front yard.",
-      "Ideal for larger families or those who enjoy entertaining, the property provides parking for up to 5 vehicles. With an energy efficiency rating of H, this home is a great opportunity for those seeking comfort and value in a desirable neighborhood.",
-    ],
-    amenities: ["Semi-furnished", "Tiled floors throughout", "Tiled front yard", "Parking for 5 vehicles"],
-    images: img("lusignan-two-story"),
-    ref: "HZHZ11",
-    listed: "2024-12-01",
-  },
 
   // ─── For rent ──────────────────────────────────────────────────────────
   {

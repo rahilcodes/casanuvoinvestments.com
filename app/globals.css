@@ -379,10 +379,6 @@
 
 @utility kicker {
   @apply inline-flex items-center gap-2.5 text-[13px] font-semibold tracking-[0.01em] text-stone;
-  &::before {
-    content: "";
-    @apply h-1.5 w-1.5 flex-none rounded-full bg-gold;
-  }
 }
 
 @utility pill {
